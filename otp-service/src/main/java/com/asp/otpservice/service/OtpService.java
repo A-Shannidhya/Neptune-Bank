@@ -48,9 +48,7 @@ public class OtpService {
         this.otpRepository = otpRepository;
     }
 
-    // ────────────────────────
-    // Send Email OTP
-    // ────────────────────────
+
     public ResponseEntity<String> sendEmailOtp(String toEmail) {
         String otp = OtpGenerator.generateOtp(6);
         SimpleMailMessage message = new SimpleMailMessage();
@@ -68,9 +66,7 @@ public class OtpService {
         }
     }
 
-    // ────────────────────────
-    // Send SMS OTP using TextBee
-    // ────────────────────────
+
     public ResponseEntity<String> sendSmsOtp(String phoneNumber) {
         String otp = OtpGenerator.generateOtp(6);
         String message = "Dear Customer, your Neptune Bank OTP is: " + otp + ". Please do not share it with anyone. - Neptune Bank";
@@ -103,9 +99,7 @@ public class OtpService {
         }
     }
 
-    // ────────────────────────
-    // Verify OTP (Common for Email & Phone)
-    // ────────────────────────
+
     public ResponseEntity<String> verifyOtp(String identifier, String inputOtp) {
         Optional<Otp> otpOptional = otpRepository.findByPhoneNumber(identifier);
 

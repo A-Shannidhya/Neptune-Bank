@@ -19,7 +19,7 @@ public class OtpController {
         this.otpService = otpService;
     }
 
-    // 🔹 Send OTP to both email and phone with separate codes
+
     @PostMapping("/send")
     public ResponseEntity<String> sendOtpToBoth(@Valid @RequestBody OtpMultiChannelRequestDTO request) {
         StringBuilder status = new StringBuilder();
@@ -41,7 +41,7 @@ public class OtpController {
         return ResponseEntity.ok(status.toString().trim());
     }
 
-    // 🔹 Unified OTP verification
+
     @PostMapping("/verify")
     public ResponseEntity<String> verifyOtp(@Valid @RequestBody OtpVerifyRequestDTO request) {
         return otpService.verifyOtp(request.getIdentifier(), request.getOtp());
